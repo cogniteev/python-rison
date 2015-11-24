@@ -55,3 +55,9 @@ class TestDecoder(unittest.TestCase):
         self.assertEqual(loads("'user@domain.com'"), 'user@domain.com')
         self.assertEqual(loads("'US $10'"), 'US $10')
         self.assertEqual(loads("'can!'t'"), "can't")
+
+    def test_pct(self):
+        self.assertEquals(loads('(and:!((field:!(fetched,equals,!t)),(field:!(url,contains,%))))'),
+                          {'and': [{'field': ['fetched', 'equals', True]}, {'field': ['url', 'contains', '%']}]})
+        self.assertEquals(loads("""!(url,contains,'!'%!'!!!!')"""),
+                          ['url', 'contains', "'%'!!"])

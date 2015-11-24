@@ -5,9 +5,7 @@ WHITESPACE = ''
 
 IDCHAR_PUNCTUATION = '_-./~'
 
-NOT_IDCHAR = ''.join([c for c in (chr(i) for i in range(127))
-                      if not (c.isalnum()
-                              or c in IDCHAR_PUNCTUATION)])
+NOT_IDCHAR = " '!:(),*@$"
 
 # Additionally, we need to distinguish ids and numbers by first char.
 NOT_IDSTART = '-0123456789'
