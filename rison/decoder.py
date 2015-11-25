@@ -33,7 +33,8 @@ class Parser(object):
 
         value = self.read_value()
         if self.next():
-            raise ParserException("unable to parse rison string %r" % (string,))
+            msg = "unable to parse rison string %r" % (string,)
+            raise ParserException(msg)
         return value
 
     def read_value(self):
@@ -50,7 +51,7 @@ class Parser(object):
 
         # fell through table, parse as an id
         s = self.string
-        i = self.index-1
+        i = self.index - 1
 
         m = NEXT_ID_RE.match(s, i)
         if m:
@@ -138,19 +139,20 @@ class Parser(object):
                 break
 
             if c == '!':
-                if start < i-1:
-                    segments.append(s[start:i-1])
+                if start < i - 1:
+                    segments.append(s[start:i - 1])
                 c = s[i]
                 i += 1
                 if c in "!'":
                     segments.append(c)
                 else:
-                    raise ParserException('invalid string escape: "!'+c+'"')
+                    raise ParserException('invalid string escape: "!' +
+                                          c + '"')
 
                 start = i
 
-        if start < i-1:
-            segments.append(s[start:i-1])
+        if start < i - 1:
+            segments.append(s[start:i - 1])
         self.index = i
         return ''.join(segments)
 
@@ -158,7 +160,7 @@ class Parser(object):
     def parse_number(self):
         s = self.string
         i = self.index
-        start = i-1
+        start = i - 1
         state = 'int'
         permitted_signs = '-'
         transitions = {

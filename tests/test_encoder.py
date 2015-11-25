@@ -55,4 +55,3 @@ class TestEncoder(unittest.TestCase):
         self.assertEqual("'user@domain.com'", dumps('user@domain.com'))
         self.assertEqual("'US $10'", dumps('US $10'))
         self.assertEqual("'can!'t'", dumps("can't"))
-

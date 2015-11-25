@@ -105,14 +105,14 @@ def encode_array(v):
     if not isinstance(v, list):
         raise AssertionError('encode_array expects a list argument')
     r = dumps(v)
-    return r[2, len(r)-1]
+    return r[2, len(r) - 1]
 
 
 def encode_object(v):
     if not isinstance(v, dict) or v is None or isinstance(v, list):
         raise AssertionError('encode_object expects an dict argument')
     r = dumps(v)
-    return r[1, len(r)-1]
+    return r[1, len(r) - 1]
 
 
 def encode_uri(v):

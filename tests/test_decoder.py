@@ -57,7 +57,15 @@ class TestDecoder(unittest.TestCase):
         self.assertEqual(loads("'can!'t'"), "can't")
 
     def test_pct(self):
-        self.assertEquals(loads('(and:!((field:!(fetched,equals,!t)),(field:!(url,contains,%))))'),
-                          {'and': [{'field': ['fetched', 'equals', True]}, {'field': ['url', 'contains', '%']}]})
+        s1 = '(and:!((field:!(fetched,equals,!t)),(field:!(url,contains,%))))'
+        self.assertEquals(
+            loads(s1),
+            {
+                'and': [
+                    {'field': ['fetched', 'equals', True]},
+                    {'field': ['url', 'contains', '%']}
+                ]
+            }
+        )
         self.assertEquals(loads("""!(url,contains,'!'%!'!!!!')"""),
                           ['url', 'contains', "'%'!!"])
