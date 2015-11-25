@@ -1,2 +1,7 @@
 *.pyc
 .idea
+.coverage
+.eggs
+.env
+.tox
+rison.egg-info

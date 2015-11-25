@@ -1,0 +1,17 @@
+language: python
+sudo: required
+python:
+- '2.7'
+install:
+- travis_retry pip install tox>=2.1.1 coveralls
+script:
+- tox -e $(echo py$TRAVIS_PYTHON_VERSION | tr -d . )
+after_success: coveralls --verbose
+branches:
+  only:
+  - master
+  - /^v.*$/
+deploy:
+notifications:
+  slack:
+    secure: Pti6WROwFYs9Ymdya7ngHqYM66s1gFfoo+swIrZGjys1BlYiSvgsGkJop57wQjm3o0mxyjdqF+fVSiuMEh1Qdvt3sKlE7VOcBxSwdl6+FjVevJWTU3eB9od/xe3L63w/OgxuSv2yE/YBqM9huocF+LwGOymwlN1ZhjG5NK0bEO9FaQ0YhHNVMVyIx13C9fPMEHsRk07ewRAbwV6k/uEdh1qsrredGQ/aqfGLf62+fFw5YG+BTqgjtTvST19Kc6RssBxjkVr4I5KZn6r+TgRyYmX2vLdCzAj4mW2bO/CJm2bhYp/b+WqGfabNa2T4YdocOc8Tljy+UI5XTDbgksrJ8pQFl5VOeJb36y92RWdMJEjoUMkpSyE63sjOH///3ewmwYcnWwdVGa3YnQv4yLd8QOT1ieLzMn4o1vAxXvdRkOhFdEjz8u+2hV9T1jCDKm2PGpo+ePCaXShwwpVm96oOzWHigRyUGMPKhMwChSmbqMPMjIqAC+4txrNYAvAJz0+UrhhV64P/tqF8zA/hyjIGx2K+diBKNqgdoonGJBrvKw11WYWh4vyfbPTwotnOgV6KWU9R1zxxckaA8W4XZlDrB1MDatfqFTXPPJYJpy3HcM8/8ydAnOTCbnZzGUXYZl6mec5OftAaKtADvyhL3++JfXP02/q0iaBJQuaifPmEgl4=

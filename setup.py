@@ -6,9 +6,9 @@ setup(
     version='0.0.1',
     description='A Python rison encoder/decoder',
     long_description='A Python rison encoder/decoder',
-    url='https://github.com/pifantastic/python-rison',
+    url='https://github.com/cogniteev/python-rison',
     author='Aaron Forsander',
-    author_email='aaron.forsander@gmail.com',
+    author_email='tech@cogniteev.com',
     license='MIT',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -19,7 +19,7 @@ setup(
     ],
     keywords='rison',
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
-    extras_require={
-        'test': ['nose'],
-    }
+    install_requires=[
+        'six>=1.10.0',
+    ],
 )
