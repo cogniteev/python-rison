@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='rison',
-    version='0.0.2',
+    version='0.0.2.post1',
     description='A Python rison encoder/decoder',
     long_description='A Python rison encoder/decoder',
     url='https://github.com/cogniteev/python-rison',
