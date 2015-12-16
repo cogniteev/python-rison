@@ -5,3 +5,4 @@
 .env
 .tox
 rison.egg-info
+dist
